@@ -56,7 +56,7 @@ public class Main {
         System.out.println("-----------------------------------------");
         OutWhile:
         while (true) {
-            System.out.println("Inserisci un numero da 1 a " + numMultimedia + " per riprodurre (:q=quit & :m=modifica)");
+            System.out.println("Inserisci un numero da 1 a " + numMultimedia + " per riprodurre (0=quit & :m=modifica)");
             switch (input.nextLine()) {
                 case "1": {
                     if (multimedia[0] instanceof Audio)
@@ -103,30 +103,32 @@ public class Main {
                         ((Video) multimedia[4]).play();
                     break;
                 }
-                case ":q": {
+                case "0": {
                     break OutWhile;
                 }
                 case ":m": {
-                    System.out.println("Inserisci un numero da 0 a " + (numMultimedia - 1) + " per modificare");
-                    int n = Integer.parseInt(input.nextLine());
+                    System.out.println("Inserisci un numero da 1 a " + (numMultimedia) + " per selezionare l'elemento da modificare");
+                    int n = Integer.parseInt(input.nextLine()) - 1;
                     if (n >= 0 && n < numMultimedia) {
                         if (multimedia[n] instanceof Audio) {
                             Modificatore:
                             while (true) {
-                                System.out.println("Regola volume u=v+1 d=v-1 e=esci da modifica");
-                                if (Objects.equals(input.nextLine(), "u")) {
+                                System.out.println("Regola volume vu=v+1 vd=v-1 e=esci da modifica");
+                                String str = input.nextLine();
+                                if (Objects.equals(str, "vu")) {
                                     ((Audio) multimedia[n]).volumeUp();
-                                } else if (Objects.equals(input.nextLine(), "d")) {
+                                } else if (Objects.equals(str, "vd")) {
                                     ((Audio) multimedia[n]).volumeDown();
                                 } else break Modificatore;
                             }
                         } else if (multimedia[n] instanceof Image) {
                             Modificatore:
                             while (true) {
-                                System.out.println("Regola volume u=l+1 d=l-1 e=esci da modifica");
-                                if (Objects.equals(input.nextLine(), "u")) {
+                                System.out.println("Regola volume lu=l+1 ld=l-1 e=esci da modifica");
+                                String str = input.nextLine();
+                                if (Objects.equals(str, "lu")) {
                                     ((Image) multimedia[n]).brightnessUp();
-                                } else if (Objects.equals(input.nextLine(), "d")) {
+                                } else if (Objects.equals(str, "ld")) {
                                     ((Image) multimedia[n]).brightnessDown();
                                 } else break Modificatore;
                             }
