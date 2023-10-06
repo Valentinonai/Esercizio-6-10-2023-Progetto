@@ -3,7 +3,6 @@ import entities.Image;
 import entities.Multimedia;
 import entities.Video;
 
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
@@ -19,7 +18,7 @@ public class Main {
 
         Esterno:
         for (int i = 0; i < numMultimedia; i++) {
-            System.out.println("Quale elemento multimediale vuoi inserire? (0=AUDIO-1=VIDEO-2=IMMAGINE-9=ESCI");
+            System.out.println("Quale elemento multimediale vuoi inserire? (0=AUDIO-1=VIDEO-2=IMMAGINE-9=ESCI)");
             switch (Integer.parseInt(input.nextLine())) {
                 case 0: {
                     System.out.println("Inserisci il titolo dell'audio");
@@ -114,23 +113,35 @@ public class Main {
                             Modificatore:
                             while (true) {
                                 System.out.println("Regola volume vu=v+1 vd=v-1 e=esci da modifica");
-                                String str = input.nextLine();
-                                if (Objects.equals(str, "vu")) {
-                                    ((Audio) multimedia[n]).volumeUp();
-                                } else if (Objects.equals(str, "vd")) {
-                                    ((Audio) multimedia[n]).volumeDown();
-                                } else break Modificatore;
+                                switch (input.nextLine()) {
+                                    case "vu": {
+                                        ((Audio) multimedia[n]).volumeUp();
+                                        break;
+                                    }
+                                    case "vd": {
+                                        ((Audio) multimedia[n]).volumeDown();
+                                        break;
+                                    }
+                                    default:
+                                        break Modificatore;
+                                }
                             }
                         } else if (multimedia[n] instanceof Image) {
                             Modificatore:
                             while (true) {
                                 System.out.println("Regola volume lu=l+1 ld=l-1 e=esci da modifica");
-                                String str = input.nextLine();
-                                if (Objects.equals(str, "lu")) {
-                                    ((Image) multimedia[n]).brightnessUp();
-                                } else if (Objects.equals(str, "ld")) {
-                                    ((Image) multimedia[n]).brightnessDown();
-                                } else break Modificatore;
+                                switch (input.nextLine()) {
+                                    case "lu": {
+                                        ((Image) multimedia[n]).brightnessUp();
+                                        break;
+                                    }
+                                    case "ld": {
+                                        ((Image) multimedia[n]).brightnessDown();
+                                        break;
+                                    }
+                                    default:
+                                        break Modificatore;
+                                }
                             }
                         } else if (multimedia[n] instanceof Video) {
                             Modificatore:
