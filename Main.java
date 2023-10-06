@@ -70,7 +70,7 @@ public class Main {
                         if (multimedia[n] instanceof Audio) {
                             Modificatore:
                             while (true) {
-                                System.out.println("Regola volume vu=v+1 vd=v-1 e=esci da modifica");
+                                System.out.println("Regola volume vu=volume+1 vd=volume-1 e=esci da modifica");
                                 switch (input.nextLine()) {
                                     case "vu": {
                                         ((Audio) multimedia[n]).volumeUp();
@@ -87,7 +87,7 @@ public class Main {
                         } else if (multimedia[n] instanceof Image) {
                             Modificatore:
                             while (true) {
-                                System.out.println("Regola volume lu=l+1 ld=l-1 e=esci da modifica");
+                                System.out.println("Regola luminosità lu=luminosità+1 ld=luminosità-1 e=esci da modifica");
                                 switch (input.nextLine()) {
                                     case "lu": {
                                         ((Image) multimedia[n]).brightnessUp();
