@@ -41,7 +41,7 @@ public class Video extends Multimedia implements Volume, Brightness {
             for (int j = 0; j < this.brightness; j++) {
                 System.out.print("*");
             }
-            System.out.println("\n");
+            System.out.print("\n");
         }
     }
 

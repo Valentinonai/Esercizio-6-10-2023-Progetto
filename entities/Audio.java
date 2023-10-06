@@ -25,7 +25,7 @@ public class Audio extends Multimedia implements Volume {
             for (int j = 0; j < this.volume; j++) {
                 System.out.print("!");
             }
-            System.out.println("\n");
+            System.out.print("\n");
         }
     }
 
