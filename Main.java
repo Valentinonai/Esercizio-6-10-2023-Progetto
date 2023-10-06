@@ -3,18 +3,23 @@ import entities.Image;
 import entities.Multimedia;
 import entities.Video;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
-        final int numMultimedia = 2;
+
         Scanner input = new Scanner(System.in);
+
+
+        System.out.println("Quanti elementi vuoi inserire?");
+        final int numMultimedia = Integer.parseInt(input.nextLine());
         Multimedia[] multimedia = new Multimedia[numMultimedia];
 
         Esterno:
         for (int i = 0; i < numMultimedia; i++) {
-            System.out.println("Quale elemento multimediale vuoi inserire? (0=AUDIO-1=VIDEO-2=IMMAGINE-9=INTERROMPI");
+            System.out.println("Quale elemento multimediale vuoi inserire? (0=AUDIO-1=VIDEO-2=IMMAGINE-9=ESCI");
             switch (Integer.parseInt(input.nextLine())) {
                 case 0: {
                     System.out.println("Inserisci il titolo dell'audio");
@@ -48,10 +53,10 @@ public class Main {
                 }
             }
         }
-       
+        System.out.println("-----------------------------------------");
         OutWhile:
         while (true) {
-            System.out.println("Inserisci un numero da 1 a " + numMultimedia + " per riprodurre (:q=quit)");
+            System.out.println("Inserisci un numero da 1 a " + numMultimedia + " per riprodurre (:q=quit & :m=modifica)");
             switch (input.nextLine()) {
                 case "1": {
                     if (multimedia[0] instanceof Audio)
@@ -100,6 +105,61 @@ public class Main {
                 }
                 case ":q": {
                     break OutWhile;
+                }
+                case ":m": {
+                    System.out.println("Inserisci un numero da 0 a " + (numMultimedia - 1) + " per modificare");
+                    int n = Integer.parseInt(input.nextLine());
+                    if (n >= 0 && n < numMultimedia) {
+                        if (multimedia[n] instanceof Audio) {
+                            Modificatore:
+                            while (true) {
+                                System.out.println("Regola volume u=v+1 d=v-1 e=esci da modifica");
+                                if (Objects.equals(input.nextLine(), "u")) {
+                                    ((Audio) multimedia[n]).volumeUp();
+                                } else if (Objects.equals(input.nextLine(), "d")) {
+                                    ((Audio) multimedia[n]).volumeDown();
+                                } else break Modificatore;
+                            }
+                        } else if (multimedia[n] instanceof Image) {
+                            Modificatore:
+                            while (true) {
+                                System.out.println("Regola volume u=l+1 d=l-1 e=esci da modifica");
+                                if (Objects.equals(input.nextLine(), "u")) {
+                                    ((Image) multimedia[n]).brightnessUp();
+                                } else if (Objects.equals(input.nextLine(), "d")) {
+                                    ((Image) multimedia[n]).brightnessDown();
+                                } else break Modificatore;
+                            }
+                        } else if (multimedia[n] instanceof Video) {
+                            Modificatore:
+                            while (true) {
+                                System.out.println("Regola volume vu=volume+1 vd=volume-1 lu=luminosità+1 ld=luminosità-1 e=esci da modifica");
+                                switch (input.nextLine()) {
+                                    case "vu": {
+                                        ((Video) multimedia[n]).volumeUp();
+                                        break;
+                                    }
+                                    case "vd": {
+                                        ((Video) multimedia[n]).volumeDown();
+                                        break;
+                                    }
+                                    case "lu": {
+                                        ((Video) multimedia[n]).brightnessUp();
+                                        break;
+                                    }
+                                    case "ld": {
+                                        ((Video) multimedia[n]).brightnessDown();
+                                        break;
+                                    }
+                                    default:
+                                        break Modificatore;
+                                }
+
+                            }
+                        }
+                    } else System.out.println("Elemento inesistente");
+
+                    break;
                 }
             }
         }
