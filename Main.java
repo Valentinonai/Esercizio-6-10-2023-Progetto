@@ -104,7 +104,7 @@ public class Main {
                         } else if (multimedia[n] instanceof Video) {
                             Modificatore:
                             while (true) {
-                                System.out.println("Regola volume vu=volume+1 vd=volume-1 lu=luminosità+1 ld=luminosità-1 e=esci ");
+                                System.out.println("Regola volume e luminosità vu=volume+1 vd=volume-1 lu=luminosità+1 ld=luminosità-1 e=esci ");
                                 switch (input.nextLine()) {
                                     case "vu": {
                                         ((Video) multimedia[n]).volumeUp();
