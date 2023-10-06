@@ -24,7 +24,7 @@ public class Video extends Multimedia implements Volume, Brightness {
 
     public void setBrightness(int brightness) {
         if (brightness >= 0 && brightness <= 100)
-            this.brightness = volume;
+            this.brightness = brightness;
         else if (brightness < 0)
             System.out.println("Luminosità al minimo");
         else System.out.println("Luminosità al massimo");
