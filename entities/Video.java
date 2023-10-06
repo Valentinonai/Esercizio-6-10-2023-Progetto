@@ -30,6 +30,7 @@ public class Video extends Multimedia implements Volume, Brightness {
         else System.out.println("Luminosità al massimo");
     }
 
+    @Override
     public void play() {
         for (int i = 0; i < this.time; i++) {
             System.out.print(this.title + " ");

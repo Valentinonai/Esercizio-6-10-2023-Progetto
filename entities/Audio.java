@@ -18,6 +18,7 @@ public class Audio extends Multimedia implements Volume {
         else System.out.println("Volume al massimo");
     }
 
+    @Override
     public void play() {
         for (int i = 0; i < this.time; i++) {
             System.out.print(this.title + " ");

@@ -56,52 +56,10 @@ public class Main {
         OutWhile:
         while (true) {
             System.out.println("Inserisci un numero da 1 a " + numMultimedia + " per riprodurre (0=quit & :m=modifica)");
-            switch (input.nextLine()) {
-                case "1": {
-                    if (multimedia[0] instanceof Audio)
-                        ((Audio) multimedia[0]).play();
-                    else if (multimedia[0] instanceof Image)
-                        ((Image) multimedia[0]).show();
-                    else
-                        ((Video) multimedia[0]).play();
-                    break;
-                }
-                case "2": {
-                    if (multimedia[1] instanceof Audio)
-                        ((Audio) multimedia[1]).play();
-                    else if (multimedia[1] instanceof Image)
-                        ((Image) multimedia[1]).show();
-                    else
-                        ((Video) multimedia[1]).play();
-                    break;
-                }
-                case "3": {
-                    if (multimedia[2] instanceof Audio)
-                        ((Audio) multimedia[2]).play();
-                    else if (multimedia[2] instanceof Image)
-                        ((Image) multimedia[2]).show();
-                    else
-                        ((Video) multimedia[2]).play();
-                    break;
-                }
-                case "4": {
-                    if (multimedia[3] instanceof Audio)
-                        ((Audio) multimedia[3]).play();
-                    else if (multimedia[3] instanceof Image)
-                        ((Image) multimedia[3]).show();
-                    else
-                        ((Video) multimedia[3]).play();
-                    break;
-                }
-                case "5": {
-                    if (multimedia[4] instanceof Audio)
-                        ((Audio) multimedia[4]).play();
-                    else if (multimedia[4] instanceof Image)
-                        ((Image) multimedia[4]).show();
-                    else
-                        ((Video) multimedia[4]).play();
-                    break;
-                }
+
+            String str = input.nextLine();
+            switch (str) {
+
                 case "0": {
                     break OutWhile;
                 }
@@ -173,6 +131,17 @@ public class Main {
                     } else System.out.println("Elemento inesistente");
 
                     break;
+                }
+                default: {
+                    int n = Integer.parseInt(str) - 1;
+                    if (n < multimedia.length) {
+                        if (multimedia[n] instanceof Audio)
+                            ((Audio) multimedia[n]).play();
+                        else if (multimedia[n] instanceof Image)
+                            ((Image) multimedia[n]).show();
+                        else if (multimedia[n] instanceof Video)
+                            ((Video) multimedia[n]).play();
+                    } else System.out.println("Elemento inesistente");
                 }
             }
         }
